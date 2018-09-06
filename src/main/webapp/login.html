@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type"
+	content="application/xhtml+xml; charset=UTF-8" />
+<title>E-Buy Login</title>
+<h1>E-Buy</h1>
+<script>
+	function validate() {
+		var email = document.getElementById("email1").value.trim();
+		var pwd = document.getElementById("pwd").value;
+		if (email === "" || pwd === "") {
+			window.alert("Fields cannot be Empty!");
+			location.reload();
+			die();
+		} else {
+			var pwd1 = localStorage.getItem(email);
+			if (pwd1 == null) {
+				window.alert("Email not exists!");
+				location.reload();
+				die();
+			} else {
+				if (pwd == pwd1) {
+					window.alert("Login Successful!");
+					var form=document.getElementById("myForm");
+					form.uname.value=email;
+					form.submit(this);
+				} else {
+					window.alert("Password Incorrect!");
+					location.reload();
+				}
+
+			}
+		}
+
+	}
+</script>
+
+</head>
+<style>
+h1 {
+	background-position: top;
+	background-size: 4cm;
+	background-color: #4fa3f2;
+	margin-top: -0.2cm;
+	text-align: left;
+	letter-spacing: 3pt;
+	font-size: 30pt;
+	font-family: fantasy;
+	margin-left: 0cm;
+	margin-right: -0.2cm;
+	margin-top: 0cm;
+	height: 1.5cm;
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input {
+	height: 1cm;
+	width: 11cm;
+	font-size: 15pt;
+	font-family: monospace;
+	margin-left: 12cm;
+	position: fixed;
+	background: inactiveborder;
+	background-color: menu;
+	border-radius: 0.3cm;
+}
+</style>
+<body background="back.jpg">
+	<h2
+		style="margin-left: 16cm; font-size: 1.2cm; font-family: monospace; font-weight: bolder; font-variant: small-caps;">Login</h2>
+	<form action="" method="post" autocomplete="off">
+		<input autocomplete="off"
+			style="margin-top: 0.5cm; border-style: inset;" type="email"
+			autocomplete="off" id="email1" placeholder="Email ID"><br>
+		<input autocomplete="off"
+			style="margin-top: 2.3cm; border-style: inset;" autocomplete="off"
+			type="password" id="pwd" placeholder="Password"><br>
+		<p style="margin-left: 18cm; margin-top: 3.3cm">
+			New User? <a href="signup.html"><b style="font-size: 0.5cm">Sign
+					up!<b></b></a>
+		</p>
+		<input
+			style="margin-top: 0cm; width: 3cm; margin-left: 15.7cm; font-family: monospace; font-weight: bold; background-color: #4fa3f2;"
+			type="submit" name="submit" onclick="validate()" value="Login">
+	</form>
+	<form id=myForm action=/session method="Post">
+	<input type="hidden" name="uname">
+	</form>
+
+
+</body>
+</html>

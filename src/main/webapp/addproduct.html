@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type"
+	content="application/xhtml+xml; charset=UTF-8" />
+<title>Add product</title>
+
+<h1>E-Buy</h1>
+<script type="text/javascript">
+function addproduct(){
+	var product=document.getElementById("product").value.trim().toLowerCase();
+	var model=document.getElementById("model").value.trim();
+	var os=document.getElementById("os").value.trim();
+	var ram=document.getElementById("ram").value.trim();
+	var camera=document.getElementById("camera").value.trim();
+	var feature=document.getElementById("features").value.trim();
+	var price=document.getElementById("price").value.trim();
+	if(product==="" || model==="" || os==="" || ram==="" || camera==="" || feature==="" || price===""){
+		window.alert("Fields cannot be Empty!");
+		location.reload();
+	} else{
+		var temp=localStorage.getItem(product);
+		if(temp == null){
+		localStorage.setItem(product,model);
+		var osname=model+" os";
+		var ramdetail=model+" ram";
+		var cameradetail=model+" camera";
+		var featuress=model+" features";
+		var cost=model+" price";
+		localStorage.setItem(osname,os);
+		localStorage.setItem(ramdetail,ram);
+		localStorage.setItem(cameradetail,camera);
+		localStorage.setItem(featuress,feature);
+		localStorage.setItem(cost,price);
+		window.alert("Product Added");
+		location.reload();
+		} else{
+			var products=temp.split(" ");
+			var flag=false;
+			for(var i=0;i<products.length;i++){
+				if(products[i] === model){
+					flag=true;
+					break;
+				}
+			}
+			if(flag === true){
+				window.alert("Model already exists!");
+				location.reload();
+			} else{
+				temp=temp+" "+model;
+				localStorage.setItem(product,temp);
+				var osname=model+" os";
+				var ramdetail=model+" ram";
+				var cameradetail=model+" camera";
+				var featuress=model+" features";
+				var cost=model+" price";
+				localStorage.setItem(osname,os);
+				localStorage.setItem(ramdetail,ram);
+				localStorage.setItem(cameradetail,camera);
+				localStorage.setItem(featuress,feature);
+				localStorage.setItem(cost,price);
+				window.alert("Product Added!");
+				location.reload();
+			}
+		}
+	}
+}
+</script>
+<form action="/home" method="post" style="margin-top: -1.9cm;">
+	<input type="submit" value="Home"
+		style="margin-left: 31cm; height: 0.9cm; border-radius: 1cm; color: black; background-color: transparent; font-weight: bolder; font-size: 16pt; font-family: monospace;">
+</form>
+<form action="/signout" method="post" style="margin-top: -0.9cm;">
+	<input type="submit" value="Signout"
+		style="margin-left: 33cm; height: 0.9cm; border-radius: 1cm; color: black; background-color: transparent; font-weight: bolder; font-size: 16pt; font-family: monospace; font-variant: small-caps;">
+</form>
+<h2
+	style="margin-top: 0.5cm; margin-left: 14cm; font-weight: bold; font-variant: small-caps; font-size: 30pt; font-family: monospace;">Add
+	Products!</h2>
+<style>
+h1 {
+	background-position: top;
+	background-size: 4cm;
+	background-color: #4fa3f2;
+	margin-top: -0.2cm;
+	text-align: left;
+	letter-spacing: 3pt;
+	font-size: 30pt;
+	font-family: fantasy;
+	margin-left: 0cm;
+	margin-right: -0.2cm;
+	margin-top: 0cm;
+	height: 1.5cm;
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+</style>
+</head>
+<body background="back.jpg">
+	<form action="" method="post" autocomplete="off"
+		style="margin-left: 12cm">
+		<input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="Product Name" id="product"
+			autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="Model Number" id="model" autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="OS" id="os" autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="RAM" id="ram" autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="Camera" id="camera" autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="Special Features" id="features"
+			autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="height: 0.8cm; border-style: inset; width: 10cm; font-size: 15pt; font-family: monospace; position: fixed; background: inactiveborder; background-color: menu; border-radius: 0.3cm;"
+			type="text" placeholder="Price" id="price" autocomplete="off"><br>
+		<br>
+		<br> <input
+			style="margin-left: 3.3cm; background: inactiveborder; background-color: menu; font-size: 15pt; height: 0.8cm; width: 3cm; font-family: monospace; font-weight: bold; background-color: #4fa3f2;"
+			type="submit" onclick="javascript: addproduct();" name="add" value="Add">
+	</form>
+
+</body>
+</html>

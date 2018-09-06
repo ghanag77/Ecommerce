@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type"
+	content="application/xhtml+xml; charset=UTF-8" />
+<title>E-Buy Register</title>
+<h1>E-Buy</h1>
+<script type="text/javascript">
+javascript:window.history.forward(1);
+	function add() {
+		var email = document.getElementById("email").value.trim();
+		var pwd = document.getElementById("pwd1").value;
+		var repwd = document.getElementById("pwd2").value;
+		if (email === "" || pwd === "" || repwd === "") {
+			window.alert("Fields cannot be Empty!");
+			location.reload();
+		} else {
+			if (pwd == repwd) {
+				var temp = localStorage.getItem(email);
+				if (temp != null) {
+					window.alert("Email id already registered!");
+					location.reload();
+					die();
+				} else {
+					localStorage.setItem(email, pwd);
+					window.alert("Successfully registered!");
+					var host=window.location.hostname;
+					window.location.replace("https://ebuy-210510.appspot.com/login.html");
+				}
+			} else {
+				window.alert("Passwords do not match!");
+				location.reload();
+				die();
+			}
+		}
+
+	}
+</script>
+
+</head>
+<style>
+h1 {
+	background-position: top;
+	background-size: 4cm;
+	background-color: #4fa3f2;
+	margin-top: -0.2cm;
+	text-align: left;
+	letter-spacing: 3pt;
+	font-size: 30pt;
+	font-family: fantasy;
+	margin-left: 0cm;
+	margin-right: -0.2cm;
+	margin-top: 0cm;
+	height: 1.5cm;
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input {
+	height: 1cm;
+	width: 11cm;
+	font-size: 15pt;
+	font-family: monospace;
+	margin-left: 12cm;
+	position: fixed;
+	background: inactiveborder;
+	background-color: menu;
+	border-radius: 0.3cm;
+}
+</style>
+
+<body background="back.jpg">
+	<h2
+		style="margin-left: 15cm; font-size: 1.2cm; font-family: monospace; font-weight: bolder; font-variant: small-caps;">Sign
+		Up</h2>
+	<form action="" method="post" autocomplete="off">
+		<input style="margin-top: 0.5cm; border-style: inset;" type="email"
+			autocomplete="off" id="email" placeholder="Email ID"><br>
+		<input autocomplete="off"
+			style="margin-top: 2.3cm; border-style: inset;" type="password"
+			id="pwd1" placeholder="Password"><br> <input
+			autocomplete="off" style="margin-top: 4.1cm; border-style: inset;"
+			type="password" id="pwd2" placeholder="Re-Enter password"><br>
+		<p style="margin-left: 12.3cm; margin-top: 5.2cm">
+			Already have an account? <a href="login.html"><b
+				style="font-size: 0.5cm">Login!<b></b></a>
+		</p>
+		<input
+			style="margin-top: 0cm; width: 3cm; margin-left: 15.7cm; background: buttonface; font-family: monospace; font-weight: bold; background-color: #4fa3f2;"
+			type="submit" name="Sign up" onclick="add()" value="Sign up">
+	</form>
+
+</body>
+</html>
